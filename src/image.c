@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/10 13:54:07 by niragne           #+#    #+#             */
-/*   Updated: 2017/07/27 15:32:26 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/05 14:09:29 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,13 @@ t_image		ft_new_image(void *mlx, int x, int y)
 	return (ret);
 }
 
-void		ft_putpixel(t_image *img, int x, int y, t_uint color)
+void		ft_putpixel_secure(t_image *img, int x, int y, t_uint color)
 {
 	if (x >= 0 && y >= 0 && x < img->w && y < img->h)
+		img->data[x + y * img->w] = color;
+}
+
+void		ft_putpixel(t_image *img, int x, int y, t_uint color)
+{
 		img->data[x + y * img->w] = color;
 }

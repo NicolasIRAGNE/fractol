@@ -6,13 +6,13 @@
 #    By: niragne <niragne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/18 16:55:07 by niragne           #+#    #+#              #
-#    Updated: 2017/07/27 20:56:48 by niragne          ###   ########.fr        #
+#    Updated: 2017/08/03 21:44:20 by niragne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	fractol
 CC			=	gcc
-CFLAGS		=	-Werror -Wall -Wextra
+CFLAGS		=	-Werror -Wall -Wextra -Ofast
 CFLAGSMLX	=	-framework OpenGL -framework AppKit
 
 LIB_PATH	=	libft

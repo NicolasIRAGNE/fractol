@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 14:15:40 by niragne           #+#    #+#             */
-/*   Updated: 2017/07/27 21:45:10 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/03 16:50:21 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 # include <math.h>
 # include "keycodes.h"
 
-# define WIN_X 2000
-# define WIN_Y 2000
-# define ITER_MAX 127
+# define WIN_X 750
+# define WIN_Y 750
+# define ITER_MAX 30
 
 typedef unsigned int	t_uint;
 
@@ -46,6 +46,9 @@ typedef struct	s_env
 	void	*win;
 	t_image image;
 	int		it;
+	int		x;
+	int		y;
+	int		zoom;
 }				t_env;
 
 typedef struct	s_dpoint
@@ -66,10 +69,10 @@ t_cplx		cplx_add(t_cplx z1, t_cplx z2);
 void		ft_clear_image(t_image *img, t_uint color);
 t_image		ft_new_image(void *mlx, int x, int y);
 void		ft_putpixel(t_image *img, int x, int y, t_uint color);
-void		fractol(t_env e, t_dpoint a, t_dpoint size);
+void		mandelbrot(t_env *e, t_dpoint a, t_dpoint size);
 void		square(t_env *e, t_point2d a, int size);
-void		square_filled(t_image *image, t_point2d a, t_point2d b);
-void		julia(t_env e, t_dpoint a, t_dpoint size);
+void		square_filled(t_image *image, t_point2d a, t_point2d b, t_uint color);
+void		julia(t_env *e, t_dpoint a, t_dpoint size, t_dpoint cursor);
 void		topleft(t_env *e, t_point2d a, int size);
 void		topright(t_env *e, t_point2d a, int size);
 void		botleft(t_env *e, t_point2d a, int size);

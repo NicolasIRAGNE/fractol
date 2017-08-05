@@ -6,13 +6,13 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 15:41:37 by niragne           #+#    #+#             */
-/*   Updated: 2017/07/27 18:22:58 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/03 15:46:54 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	julia(t_env e, t_dpoint a, t_dpoint size)
+void	julia(t_env *e, t_dpoint a, t_dpoint size, t_dpoint cursor)
 {
 	double x;
 	double y;
@@ -28,7 +28,7 @@ void	julia(t_env e, t_dpoint a, t_dpoint size)
 		{
 			i = 0;
 			z = cplx_new(x * size.x / WIN_X + a.x, y * size.y / WIN_Y + a.y);
-			c = cplx_new(0.3, 0.5);
+			c = cplx_new(cursor.x * size.x / WIN_X, cursor.y * size.y / WIN_Y);
 			while (i < ITER_MAX)
 			{
 				if (z.rel * z.rel + z.im * z.im > 4)
@@ -37,11 +37,10 @@ void	julia(t_env e, t_dpoint a, t_dpoint size)
 				i++;
 			}
 			if (i != ITER_MAX)
-				ft_putpixel(&e.image,x ,y, (i * 2) << 16);
+				ft_putpixel(&e->image,x ,y, (i * 127) << 16);
 			x++;
 		}
 		y++;
 	}
-	mlx_put_image_to_window(e.mlx, e.win, e.image.image, 0, 0);
-
+	mlx_put_image_to_window(e->mlx, e->win, e->image.image, 0, 0);
 }
