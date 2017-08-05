@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 14:15:40 by niragne           #+#    #+#             */
-/*   Updated: 2017/08/03 16:50:21 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/05 17:29:09 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <math.h>
 # include "keycodes.h"
 
-# define WIN_X 750
-# define WIN_Y 750
+# define WIN_X 500
+# define WIN_Y 500
 # define ITER_MAX 30
 
 typedef unsigned int	t_uint;

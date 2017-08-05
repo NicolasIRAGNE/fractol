@@ -6,25 +6,34 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 18:31:50 by niragne           #+#    #+#             */
-/*   Updated: 2017/08/05 14:18:35 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/05 17:19:28 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <stdio.h>
 
 void	square_filled(t_image *image, t_point2d a, t_point2d b, t_uint color)
 {
 	int x;
 	int y;
 
-	/*if (a.x < 0)
+	if (a.x < 0)
 		a.x = 0;
 	if (a.y < 0)
 		a.y = 0;
 	if (a.x >= image->w)
-		a.x = image->w - 1;
+		a.x = image->w;
 	if (a.y >= image->h)
-		a.y = image->h - 1;*/
+		a.y = image->h;
+	if (b.x < 0)
+		b.x = 0;
+	if (b.y < 0)
+		b.y = 0;
+	if (b.x >= image->w)
+		b.x = image->w;
+	if (b.y >= image->h)
+		b.y = image->h;
 	y = a.y;
 	while (y < b.y)
 	{
@@ -73,9 +82,12 @@ void	topleft(t_env *e, t_point2d a, int size)
 	square_topleft(e, (t_point2d){a.x - size / 4, a.y - size / 4}, size / 2);
 	square_topright(e, (t_point2d){a.x + 3 * size / 4, a.y - size / 4}, size / 2);
 	square_botleft(e, (t_point2d){a.x - size / 4, a.y + 3 * size / 4}, size / 2);
-	topleft(e, (t_point2d){a.x - size / 4, a.y - size / 4}, size / 2);
-	topright(e, (t_point2d){a.x + 3 * size / 4, a.y - size / 4}, size / 2);
-	botleft(e, (t_point2d){a.x - size / 4, a.y + 3 * size / 4}, size / 2);
+	if (a.x + size / 2 >= 0 && a.y + size / 2 >= 0)
+		topleft(e, (t_point2d){a.x - size / 4, a.y - size / 4}, size / 2);
+	if (a.y + size / 2 >= 0)
+		topright(e, (t_point2d){a.x + 3 * size / 4, a.y - size / 4}, size / 2);
+	if (a.x + size / 2 >= 0)
+		botleft(e, (t_point2d){a.x - size / 4, a.y + 3 * size / 4}, size / 2);
 }
 
 void	topright(t_env *e, t_point2d a, int size)
@@ -85,9 +97,12 @@ void	topright(t_env *e, t_point2d a, int size)
 	square_topleft(e, (t_point2d){a.x - size / 4, a.y - size / 4}, size / 2);
 	square_topright(e, (t_point2d){a.x + 3 * size / 4, a.y - size / 4}, size / 2);
 	square_botright(e, (t_point2d){a.x + 3 * size / 4, a.y + 3 * size / 4}, size / 2);
-	topleft(e, (t_point2d){a.x - size / 4, a.y - size / 4}, size / 2);
-	topright(e, (t_point2d){a.x + 3 * size / 4, a.y - size / 4}, size / 2);
-	botright(e, (t_point2d){a.x + 3 * size / 4, a.y + 3 * size / 4}, size / 2);
+	if (a.y + size / 2 >= 0)
+		topleft(e, (t_point2d){a.x - size / 4, a.y - size / 4}, size / 2);
+	if (a.x + size / 2 <= WIN_X && a.y + size / 2 >= 0)
+		topright(e, (t_point2d){a.x + 3 * size / 4, a.y - size / 4}, size / 2);
+	if (a.x + size / 2 <= WIN_X)
+		botright(e, (t_point2d){a.x + 3 * size / 4, a.y + 3 * size / 4}, size / 2);
 }
 
 void	botleft(t_env *e, t_point2d a, int size)
@@ -97,9 +112,12 @@ void	botleft(t_env *e, t_point2d a, int size)
 	square_topleft(e, (t_point2d){a.x - size / 4, a.y - size / 4}, size / 2);
 	square_botright(e, (t_point2d){a.x + 3 * size / 4, a.y + 3 * size / 4}, size / 2);
 	square_botleft(e, (t_point2d){a.x - size / 4, a.y + 3 * size / 4}, size / 2);
-	topleft(e, (t_point2d){a.x - size / 4, a.y - size / 4}, size / 2);
-	botright(e, (t_point2d){a.x + 3 * size / 4, a.y + 3 * size / 4}, size / 2);
-	botleft(e, (t_point2d){a.x - size / 4, a.y + 3 * size / 4}, size / 2);
+	if (a.x + size / 2 >= 0)
+		topleft(e, (t_point2d){a.x - size / 4, a.y - size / 4}, size / 2);
+	if (a.y + size / 2 <= WIN_Y)
+		botright(e, (t_point2d){a.x + 3 * size / 4, a.y + 3 * size / 4}, size / 2);
+	if (a.x + size / 2 >= 0 && a.y + size / 2 <= WIN_Y)
+		botleft(e, (t_point2d){a.x - size / 4, a.y + 3 * size / 4}, size / 2);
 }
 
 void	botright(t_env *e, t_point2d a, int size)
@@ -109,14 +127,16 @@ void	botright(t_env *e, t_point2d a, int size)
 	square_botright(e, (t_point2d){a.x + 3 * size / 4, a.y + 3 * size / 4}, size / 2);
 	square_topright(e, (t_point2d){a.x + 3 * size / 4, a.y - size / 4}, size / 2);
 	square_botleft(e, (t_point2d){a.x - size / 4, a.y + 3 * size / 4}, size / 2);
-	botright(e, (t_point2d){a.x + 3 * size / 4, a.y + 3 * size / 4}, size / 2);
-	topright(e, (t_point2d){a.x + 3 * size / 4, a.y - size / 4}, size / 2);
-	botleft(e, (t_point2d){a.x - size / 4, a.y + 3 * size / 4}, size / 2);
+	if (a.x + size / 2 <= WIN_X && a.y + size / 2 <= WIN_Y)
+		botright(e, (t_point2d){a.x + 3 * size / 4, a.y + 3 * size / 4}, size / 2);
+	if (a.x + size / 2 <= WIN_X)
+		topright(e, (t_point2d){a.x + 3 * size / 4, a.y - size / 4}, size / 2);
+	if (a.y + size / 2 <= WIN_Y)
+		botleft(e, (t_point2d){a.x - size / 4, a.y + 3 * size / 4}, size / 2);
 }
 
 void	square(t_env *e, t_point2d a, int size)
 {
-
 	square_filled(&e->image, a, (t_point2d){a.x + size, a.y + size}, 0b0);
 	if (e->it >= WIN_X / 2)
 		return ;

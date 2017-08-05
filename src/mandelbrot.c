@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 15:41:37 by niragne           #+#    #+#             */
-/*   Updated: 2017/07/30 18:58:24 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/05 17:29:53 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@ void	mandelbrot(t_env *e, t_dpoint a, t_dpoint size)
 		while (x < WIN_X)
 		{
 			i = 0;
-			z = cplx_new(0, 0);
-			c = cplx_new(x * size.x / WIN_X + a.x, y * size.y / WIN_Y + a.y);
+			z = (t_cplx){0, 0};
+			c = (t_cplx){x * size.x / WIN_X + a.x, y * size.y / WIN_Y + a.y};
 			while (i < e->it)
 			{
 				if (z.rel * z.rel + z.im * z.im > 4)
 					break;
-				z = cplx_add(cplx_mult(z, z), c);
+				z = (t_cplx){z.rel * z.rel - z.im * z.im + c.rel, z.rel * z.im * 2 + c.im};
 				i++;
 			}
 			if (i != e->it)
-				ft_putpixel(&e->image,x ,y, (i * 2) << 16);
+				ft_putpixel(&e->image,x ,y, (i * 2) << i);
 			x++;
 		}
 		y++;
