@@ -6,12 +6,78 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 18:31:50 by niragne           #+#    #+#             */
-/*   Updated: 2017/08/05 17:19:28 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/07 13:58:07 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <stdio.h>
+
+int		key_hook_sq(int keycode, t_env *e)
+{
+	if (keycode == 53)
+		exit(0);
+	else if (keycode == KEY_LEFT)
+		e->x -= 1;
+	else if (keycode == KEY_RIGHT)
+		e->x += 1;
+	else if (keycode == KEY_UP)
+		e->y -= 1;
+	else if (keycode == KEY_DOWN)
+		e->y += 1;
+	else if (keycode == KEY_PAD_ADD)
+		e->zoom *= 2;
+	else if (keycode == KEY_PAD_SUB)
+		e->zoom /= 2;
+	else if (keycode == KEY_O && e->it <= WIN_X / 2)
+		e->it *= 2;
+	else if (keycode == KEY_P && e->it >= 8)
+		e->it /= 2;
+	ft_clear_image(&e->image, 0xffffff);
+	square(e, (t_point2d){e->x, e->y}, e->zoom);
+	mlx_put_image_to_window(e->mlx, e->win, e->image.image, 0, 0);
+	return (0);
+}
+
+int mouse_hook_sq(int button, int x, int y, t_env *e)
+{	
+	if (button == 1)
+	{
+		e->x = x - e->zoom / 2;
+		e->y = y - e->zoom / 2;
+	}
+	else if (button == 2)
+	{
+		e->x = x;
+		e->y = y;
+	}
+	else if (button == 4 || button == 6)
+	{
+		e->x += e->zoom / 2;
+		e->y += e->zoom / 2;
+		e->zoom *= 1.1;
+		e->x -= (x - e->x) * 0.1;
+		e->y -= (y - e->y) * 0.1;
+		e->x -= e->zoom / 2;
+		e->y -= e->zoom / 2;
+	}
+	else if (button == 5 || button == 7)
+	{
+		e->x += e->zoom / 2;
+		e->y += e->zoom / 2;
+		e->zoom /= 1.1;
+		e->x -= (x - e->x) / -11;
+		e->y -= (y - e->y) / -11;
+		e->x -= e->zoom / 2;
+		e->y -= e->zoom / 2;
+	}
+	ft_clear_image(&e->image, 0xffffff);
+	square(e, (t_point2d){e->x, e->y}, e->zoom);
+
+	//julia(e, (t_dpoint){-1, -1}, (t_dpoint){2, 2}, (t_dpoint){x, y});
+	return(1);
+}
+
 
 void	square_filled(t_image *image, t_point2d a, t_point2d b, t_uint color)
 {

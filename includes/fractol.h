@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 14:15:40 by niragne           #+#    #+#             */
-/*   Updated: 2017/08/05 17:29:09 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/07 14:07:44 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,13 @@ void		topleft(t_env *e, t_point2d a, int size);
 void		topright(t_env *e, t_point2d a, int size);
 void		botleft(t_env *e, t_point2d a, int size);
 void		botright(t_env *e, t_point2d a, int size);
+int			key_hook_sq(int keycode, t_env *e);
+int 		mouse_hook_sq(int button, int x, int y, t_env *e);
+int			key_hook_julia(int keycode, t_env *e);
+int 		mouse_hook_julia(int button, int x, int y, t_env *e);
+int			key_hook_mandel(int keycode, t_env *e);
+int 		mouse_hook_mandel(int button, int x, int y, t_env *e);
+
+
 
 #endif
