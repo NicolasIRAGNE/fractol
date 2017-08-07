@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 15:41:37 by niragne           #+#    #+#             */
-/*   Updated: 2017/08/07 15:15:19 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/07 20:23:10 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,35 @@ int		key_hook_mandel(int keycode, t_env *e)
 
 int mouse_hook_mandel(int button, int x, int y, t_env *e)
 {	
+	double tmpx;
+	double tmpy;
+	double dx;
+	double dy;
+	double dx2;
+	double dy2;
 	if (button == 1)
 	{
-		e->x = x * e->zoom / WIN_X;
-		e->y = y * e->zoom / WIN_Y;
-		//e->zoom *= 2;
-		printf("%d %d\n",x * e->zoom / WIN_X, y * e->zoom / WIN_Y);
+		tmpx = ((double)x * e->zoom / WIN_X) + e->x;
+		tmpy = ((double)y * e->zoom / WIN_Y) + e->y;
+		dx = (tmpx - e->x) / 2;
+		dy = (tmpy - e->y) / 2;
+		dx2 = (e->x + e->zoom - tmpx) / 2;
+		dy2 = (e->y + e->zoom - tmpy) / 2;
+		e->x += dx;
+		e->y += dy;
+		e->zoom -= dx + dx2;
 	}
 	else if (button == 2)
 	{
-
+		tmpx = ((double)x * e->zoom / WIN_X) + e->x;
+		tmpy = ((double)y * e->zoom / WIN_Y) + e->y;
+		dx = (tmpx - e->x) / 2;
+		dy = (tmpy - e->y) / 2;
+		dx2 = (e->x + e->zoom - tmpx) / 2;
+		dy2 = (e->y + e->zoom - tmpy) / 2;
+		e->x -= dx;
+		e->y -= dy;
+		e->zoom += dx + dx2;
 	}
 	else if (button == 4 || button == 6)
 	{
@@ -59,7 +78,7 @@ int mouse_hook_mandel(int button, int x, int y, t_env *e)
 	{
 		
 	}
-	ft_clear_image(&e->image, 0x0);
+	ft_clear_image(&e->image, 0x00000000);
 	mandelbrot(e, (t_dpoint){e->x, e->y}, (t_dpoint){e->zoom, e->zoom});
 	return(1);
 }
@@ -89,7 +108,7 @@ void	mandelbrot(t_env *e, t_dpoint a, t_dpoint size)
 				i++;
 			}
 			if (i != e->it)
-				ft_putpixel(&e->image,x ,y, (i * 2) << i);
+				ft_putpixel(&e->image,x ,y, i * 32 + 0xfe000000);
 			x++;
 		}
 		y++;

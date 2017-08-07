@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 14:15:40 by niragne           #+#    #+#             */
-/*   Updated: 2017/08/07 14:07:44 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/07 15:33:34 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ typedef struct	s_env
 	void	*win;
 	t_image image;
 	int		it;
-	int		x;
-	int		y;
-	int		zoom;
+	double		x;
+	double		y;
+	double		zoom;
 }				t_env;
 
 typedef struct	s_dpoint
