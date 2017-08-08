@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 14:15:40 by niragne           #+#    #+#             */
-/*   Updated: 2017/08/07 15:33:34 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/08 21:28:01 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,26 @@
 # include <math.h>
 # include "keycodes.h"
 
-# define WIN_X 500
-# define WIN_Y 500
-# define ITER_MAX 30
+# define WIN_X e->win_x
+# define WIN_Y e->win_y
+# define COLOR e->color
+# define IT e->it
+# define DX e->dx
+# define DY e->dy
+# define FLAGS e->flags
+# define ZOOM e->zoom
+# define X e->x
+# define Y e->y
+# define A e->a
+# define B e->b
+# define MULT e->mult
+
+# define FLAGLIST "Ceh"
+# define FLAGARG "xyimc"
+
+# define FLAG_CHELOU	1 << 0
+# define FLAG_STOP		1 << 1
+# define FLAG_PSYCH		1 << 2
 
 typedef unsigned int	t_uint;
 
@@ -46,9 +63,18 @@ typedef struct	s_env
 	void	*win;
 	t_image image;
 	int		it;
-	double		x;
-	double		y;
-	double		zoom;
+	double	x;
+	double	y;
+	double	zoom;
+	double	a;
+	double	b;
+	int		dx;
+	int		dy;
+	t_uint	color;
+	t_uint	flags;
+	int		win_x;
+	int		win_y;
+	int		mult;
 }				t_env;
 
 typedef struct	s_dpoint
@@ -80,10 +106,13 @@ void		botright(t_env *e, t_point2d a, int size);
 int			key_hook_sq(int keycode, t_env *e);
 int 		mouse_hook_sq(int button, int x, int y, t_env *e);
 int			key_hook_julia(int keycode, t_env *e);
-int 		mouse_hook_julia(int button, int x, int y, t_env *e);
+int 		mouse_hook_julia1(int x, int y, t_env *e);
+int 		mouse_hook_julia2(int button, int x, int y, t_env *e);
 int			key_hook_mandel(int keycode, t_env *e);
 int 		mouse_hook_mandel(int button, int x, int y, t_env *e);
-
-
+void		parse_flags(t_env *e, char **av, int ac);
+void		init_flags(t_env *e, char *fractal);
+void		ft_puterr(char *str);
+void		print_help(void);
 
 #endif

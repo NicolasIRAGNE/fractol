@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 15:41:37 by niragne           #+#    #+#             */
-/*   Updated: 2017/08/07 20:23:10 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/08 20:55:43 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		key_hook_mandel(int keycode, t_env *e)
 	else if (keycode == KEY_P && e->it >= 8)
 		e->it /= 2;
 	ft_clear_image(&e->image, 0);
-	mandelbrot(e, (t_dpoint){e->x, e->y}, (t_dpoint){e->zoom, e->zoom}); //zoom = 2 x = -1 y = -1
+	mandelbrot(e, (t_dpoint){e->x, e->y}, (t_dpoint){e->zoom, e->zoom});
 	mlx_put_image_to_window(e->mlx, e->win, e->image.image, 0, 0);
 	return (0);
 }
@@ -108,7 +108,7 @@ void	mandelbrot(t_env *e, t_dpoint a, t_dpoint size)
 				i++;
 			}
 			if (i != e->it)
-				ft_putpixel(&e->image,x ,y, i * 32 + 0xfe000000);
+				ft_putpixel(&e->image,x ,y, i * 32);
 			x++;
 		}
 		y++;

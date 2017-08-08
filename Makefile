@@ -6,7 +6,7 @@
 #    By: niragne <niragne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/18 16:55:07 by niragne           #+#    #+#              #
-#    Updated: 2017/08/07 15:04:01 by niragne          ###   ########.fr        #
+#    Updated: 2017/08/08 21:07:38 by niragne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,9 @@ SRC			=	cplx.c \
 				julia.c \
 				square.c \
 				mandelbrot.c \
+				puterr.c \
+				flags.c \
+				help.c \
 				main.c 
 
 OBJ_DIR		=	obj

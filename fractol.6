@@ -1,0 +1,55 @@
+.TH man 6 "08 Aug 2017" "1.0" "fractol man page"
+.SH NAME
+fractol \- displays fractals
+.SH SYNOPSIS
+fractol [FRACTAL] 
+.PP
+Current supported fractals are mandelbrot, julia and square.
+.SH DESCRIPTION
+fractol is a simple software used to display common fractals with the minilibx graphics lib.
+.SH OPTIONS
+.IP "-c [color]"
+Sets the color of the fractal to the one specified. Colors available = red, blue, green and chelou.
+.IP "--dx [>0]"
+Sets the program to render only 1/dx pixel horizontally. Can greatly speed up the rendering. Also gives a cool retro gameboy-like effect. If the value provided is negative or zero, it is set to 1.
+.IP "--dy [>0]"
+Same as --dx but vertically.
+.IP "-m [>0]"
+Sets the initial color multiplier.
+.IP "-x [1-2560]"
+Sets the horizontal dimensions of the window. If the value provided is negative or, it is set to 100.
+.IP "-y [1-1440]"
+Same as -x but vertical.
+.IP "-i [1-255]"
+Sets the initial iterations for the fractals, or the minimum size of the squares for the square fractal.
+.IP "-e"
+Sets the epileptic mode. Color changes everytime the mouse is moved.
+.IP "-C"
+Sets the 'chelou' mode on. Kinda psychedelic. Very cool.
+.IP "-h"
+Displays help.
+.IP "--chelou"
+Same as -C.
+.IP "--help"
+Same as -h.
+.IP "-steak"
+euh sa sa fe rien
+.SH KEY BINDINGS
+.IP "O"
+Decreases iterations by 1 while the key is held and re-renders the fractal.
+.IP "P"
+Increases iterations by 1 while the key is held and re-renders the fractal.
+.IP "D"
+Unsets the epileptic mode.
+.IP "Arrow keys"
+Moves the fractal in cardinal directions.
+.IP "S key"
+If using julia, stops the mouse from changing the fractal. Pressing it again enables it back.
+.IP "Mouse1 or Mwheelup"
+Zooms in the fractal where the cursor is.
+.IP "Mouse2 or Mwheeldown"
+Dezooms.
+.SH BUGS
+bah eu si tu met une fenetre de 1 pixel c pouri tu tattend a koi aussi
+.SH AUTHOR
+niragne
