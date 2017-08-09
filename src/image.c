@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/10 13:54:07 by niragne           #+#    #+#             */
-/*   Updated: 2017/08/09 18:51:42 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/09 20:56:46 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,3 @@ void		ft_fillpixels(t_env *e, int x, int y, t_uint color)
 		i++;
 	}
 }
-	

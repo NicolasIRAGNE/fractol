@@ -6,7 +6,7 @@
 #    By: niragne <niragne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/18 16:55:07 by niragne           #+#    #+#              #
-#    Updated: 2017/08/09 18:56:34 by niragne          ###   ########.fr        #
+#    Updated: 2017/08/09 20:54:40 by niragne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRC			=	cplx.c \
 				display_info.c \
 				zoom.c \
 				help.c \
+				tools.c \
 				main.c 
 
 OBJ_DIR		=	obj

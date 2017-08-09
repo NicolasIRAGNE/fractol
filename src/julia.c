@@ -6,12 +6,12 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 15:41:37 by niragne           #+#    #+#             */
-/*   Updated: 2017/08/09 20:18:15 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/09 20:57:14 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <stdio.h>
+
 int		key_hook_julia(int keycode, t_env *e)
 {
 	static void (*f[300])(t_env *, int) = {NULL};

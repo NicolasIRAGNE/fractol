@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 14:15:40 by niragne           #+#    #+#             */
-/*   Updated: 2017/08/09 20:16:26 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/09 20:55:13 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ t_image		ft_new_image(void *mlx, int x, int y);
 void		ft_putpixel(t_image *img, int x, int y, t_uint color);
 void		mandelbrot(t_env *e, t_dpoint a, t_dpoint size);
 void		square(t_env *e, t_point2d a, int size);
+void		init_sq(t_image *image, t_point2d *a, t_point2d *b);
 void		square_filled(t_image *image, t_point2d a, t_point2d b, t_uint color);
 void		julia(t_env *e, t_dpoint a, t_dpoint size, t_dpoint cursor);
 void		topleft(t_env *e, t_point2d a, int size);
