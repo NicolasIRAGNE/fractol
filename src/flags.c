@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 15:32:30 by niragne           #+#    #+#             */
-/*   Updated: 2017/08/09 20:16:09 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/09 21:10:13 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	parse_single(t_env *e, char *str)
 			ft_puterr("invalid argument\n");
 		i++;
 	}
-	printf("%d\n", FLAGS & FLAG_PSYCH);
 }
 
 void	parse_words(t_env *e, char *av, char *param)

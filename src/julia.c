@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 15:41:37 by niragne           #+#    #+#             */
-/*   Updated: 2017/08/09 20:57:14 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/09 21:09:13 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int		key_hook_julia(int keycode, t_env *e)
 	julia(e, (t_dpoint){e->x, e->y}, (t_dpoint){e->zoom, e->zoom},
 	(t_dpoint){e->a, e->b});
 	display_info(e);
-	printf("%d\n", FLAGS);
 	return (0);
 }
 
