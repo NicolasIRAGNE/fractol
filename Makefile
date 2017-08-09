@@ -6,13 +6,13 @@
 #    By: niragne <niragne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/18 16:55:07 by niragne           #+#    #+#              #
-#    Updated: 2017/08/08 21:07:38 by niragne          ###   ########.fr        #
+#    Updated: 2017/08/09 18:56:34 by niragne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	fractol
 CC			=	gcc
-CFLAGS		=	-Ofast
+CFLAGS		=	-Wall -Wextra -Werror -Ofast
 CFLAGSMLX	=	-framework OpenGL -framework AppKit
 
 LIB_PATH	=	libft
@@ -26,9 +26,18 @@ SRC			=	cplx.c \
 				image.c \
 				julia.c \
 				square.c \
+				square2.c \
+				square3.c \
 				mandelbrot.c \
 				puterr.c \
 				flags.c \
+				flags2.c \
+				flags3.c \
+				hook1.c \
+				hook2.c \
+				hook_tab_julia.c \
+				display_info.c \
+				zoom.c \
 				help.c \
 				main.c 
 

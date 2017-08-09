@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   puterr.c                                           :+:      :+:    :+:   */
+/*   display_info.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/08 19:55:08 by niragne           #+#    #+#             */
-/*   Updated: 2017/08/09 17:44:23 by niragne          ###   ########.fr       */
+/*   Created: 2017/08/09 17:00:28 by niragne           #+#    #+#             */
+/*   Updated: 2017/08/09 17:32:26 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	ft_puterr(char *str)
+void	display_info(t_env *e)
 {
-	int len;
+	char *it;
+	char *mult;
 
-	len = ft_strlen(str);
-	write(2, str, len);
-	exit(1);
+	it = ft_itoa(IT);
+	mult = ft_itoa(MULT);
+	mlx_string_put(e->mlx, e->win, 0, 0, 0xffffff, it);
+	mlx_string_put(e->mlx, e->win, 0, 25, 0xffffff, mult);
+	free(it);
+	free(mult);
 }

@@ -6,105 +6,17 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 15:32:30 by niragne           #+#    #+#             */
-/*   Updated: 2017/08/08 21:28:38 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/09 20:16:09 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		get_color(t_env *e, char *str)
-{
-	if (ft_strequ(str, "red"))
-		return (COLOR = 16);
-	if (ft_strequ(str, "blue"))
-		return (COLOR = 0);
-	if (ft_strequ(str, "green"))
-		return (COLOR = 8);
-	return (-1);
-}
-
-int		get_mult(t_env *e, char *str)
-{
-	int mult;
-
-	mult = ft_atoi(str);
-	if (mult <= 0)
-		MULT = 1;
-	else
-		MULT = mult;
-	return (mult);
-}
-
-int		get_dx(t_env *e, char *str)
-{
-	int dx;
-
-	dx = ft_atoi(str);
-	if (dx <= 0)
-		DX = 1;
-	else
-		DX = dx;
-	return (dx);
-}
-
-int		get_dy(t_env *e, char *str)
-{
-	int dy;
-
-	dy = ft_atoi(str);
-	if (dy <= 0)
-		DY = 1;
-	else
-		DY = dy;
-	return (dy);
-}
-
-int		get_winx(t_env *e, char *str)
-{
-	int x;
-
-	x = ft_atoi(str);
-	if (x > 2560)
-		WIN_X = 2560;
-	else if (x <= 0)
-		WIN_X = 100;
-	else
-		WIN_X = x;
-	return (x);
-}
-
-int		get_winy(t_env *e, char *str)
-{
-	int y;
-
-	y = ft_atoi(str);
-	if (y > 1440)
-		WIN_Y = 1440;
-	else if (y <= 0)
-		WIN_Y = 100;
-	else
-		WIN_Y = y;
-	return (y);
-}
-
-int		get_it(t_env *e, char *str)
-{
-	int it;
-
-	it = ft_atoi(str);
-	if (it > 255)
-		IT = 255;
-	else if (it <= 0)
-		IT = 1;
-	else
-		IT = it;
-	return (it);
-}
-
 void	init_flags(t_env *e, char *fractal)
 {
 	WIN_X = 750;
 	WIN_Y = 750;
+	FLAGS = 0;
 	if (ft_strequ("square", fractal))
 		ZOOM = WIN_X / 2;
 	else
@@ -131,10 +43,13 @@ void	parse_single(t_env *e, char *str)
 			FLAGS |= FLAG_PSYCH;
 		else if (str[i] == 'h')
 			print_help();
+		else if (str[i] == 'f')
+			FLAGS |= FLAG_FILL;
 		else
 			ft_puterr("invalid argument\n");
 		i++;
 	}
+	printf("%d\n", FLAGS & FLAG_PSYCH);
 }
 
 void	parse_words(t_env *e, char *av, char *param)
@@ -155,6 +70,8 @@ void	parse_words(t_env *e, char *av, char *param)
 		FLAGS |= FLAG_CHELOU;
 	else if (ft_strequ(av + 1, "m"))
 		get_mult(e, param);
+	else if (ft_strequ(av + 1, "-fill"))
+		FLAGS |= FLAG_FILL;
 	else
 		ft_puterr("invalid argument\n");
 }
@@ -175,36 +92,8 @@ void	parse_flags(t_env *e, char **av, int ac)
 		}
 		i++;
 	}
+	if (DX >= WIN_X)
+		DX = WIN_X - 1;
+	if (DY >= WIN_Y)
+		DY = WIN_Y - 1;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

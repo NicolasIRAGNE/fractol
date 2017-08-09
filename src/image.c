@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/10 13:54:07 by niragne           #+#    #+#             */
-/*   Updated: 2017/08/05 14:09:29 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/09 18:51:42 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,29 @@ void		ft_putpixel_secure(t_image *img, int x, int y, t_uint color)
 
 void		ft_putpixel(t_image *img, int x, int y, t_uint color)
 {
-		img->data[x + y * img->w] = color;
+	img->data[x + y * img->w] = color;
 }
+
+void		ft_fillpixels(t_env *e, int x, int y, t_uint color)
+{
+	int i;
+	int j;
+
+	if (!(FLAGS & FLAG_FILL))
+	{
+		ft_putpixel(&e->image, x, y, color);
+		return ;
+	}
+	i = 0;
+	while (i < DX)
+	{
+		j = 0;
+		while (j < DY)
+		{
+			ft_putpixel_secure(&e->image, x + i, y + j, color);
+			j++;
+		}
+		i++;
+	}
+}
+	

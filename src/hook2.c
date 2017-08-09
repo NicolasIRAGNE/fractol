@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   puterr.c                                           :+:      :+:    :+:   */
+/*   hook2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/08 19:55:08 by niragne           #+#    #+#             */
-/*   Updated: 2017/08/09 17:44:23 by niragne          ###   ########.fr       */
+/*   Created: 2017/08/09 16:54:36 by niragne           #+#    #+#             */
+/*   Updated: 2017/08/09 17:43:37 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	ft_puterr(char *str)
+void	hook_chelou(t_env *e, int keycode)
 {
-	int len;
-
-	len = ft_strlen(str);
-	write(2, str, len);
-	exit(1);
+	(void)keycode;
+	FLAGS ^= FLAG_CHELOU;
 }

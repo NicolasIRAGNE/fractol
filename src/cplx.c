@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 14:12:52 by niragne           #+#    #+#             */
-/*   Updated: 2017/07/27 15:53:13 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/09 17:32:10 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_cplx	cplx_mult(t_cplx z1, t_cplx z2)
 	return (ret);
 }
 
-t_cplx cplx_new(double rel, double im)
+t_cplx	cplx_new(double rel, double im)
 {
 	t_cplx ret;
 
@@ -30,7 +30,7 @@ t_cplx cplx_new(double rel, double im)
 	return (ret);
 }
 
-t_cplx cplx_add(t_cplx z1, t_cplx z2)
+t_cplx	cplx_add(t_cplx z1, t_cplx z2)
 {
 	t_cplx ret;
 

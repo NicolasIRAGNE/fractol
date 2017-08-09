@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 14:15:40 by niragne           #+#    #+#             */
-/*   Updated: 2017/08/08 21:28:01 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/09 20:16:26 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "libft.h"
 # include <math.h>
 # include "keycodes.h"
+# include <stdio.h>
 
 # define WIN_X e->win_x
 # define WIN_Y e->win_y
@@ -31,13 +32,16 @@
 # define A e->a
 # define B e->b
 # define MULT e->mult
+# define Z e->z
+# define C e->c
 
-# define FLAGLIST "Ceh"
+# define FLAGLIST "Cehf"
 # define FLAGARG "xyimc"
 
-# define FLAG_CHELOU	1 << 0
-# define FLAG_STOP		1 << 1
-# define FLAG_PSYCH		1 << 2
+# define FLAG_CHELOU	(1 << 0)
+# define FLAG_STOP		(1 << 1)
+# define FLAG_PSYCH		(1 << 2)
+# define FLAG_FILL		(1 << 3)
 
 typedef unsigned int	t_uint;
 
@@ -75,6 +79,8 @@ typedef struct	s_env
 	int		win_x;
 	int		win_y;
 	int		mult;
+	t_cplx	z;
+	t_cplx	c;
 }				t_env;
 
 typedef struct	s_dpoint
@@ -114,5 +120,32 @@ void		parse_flags(t_env *e, char **av, int ac);
 void		init_flags(t_env *e, char *fractal);
 void		ft_puterr(char *str);
 void		print_help(void);
+void		hook_void(t_env *e, int keycode);
+void		hook_arrow_key(t_env *e, int keycode);
+void		hook_iter(t_env *e, int keycode);
+void		hook_flags(t_env *e, int keycode);
+void		hook_mult(t_env *e, int keycode);
+void		hook_chelou(t_env *e, int keycode);
+void		fill_hook_tab(void (**f)(t_env *, int));
+void		ft_putpixel_secure(t_image *img, int x, int y, t_uint color);
+void		display_info(t_env *e);
+void		ft_zoom(t_env *e, int x, int y);
+void		ft_dezoom(t_env *e, int x, int y);
+int			get_winy(t_env *e, char *str);
+int			get_winx(t_env *e, char *str);
+int			get_color(t_env *e, char *str);
+int			get_mult(t_env *e, char *str);
+int			get_dx(t_env *e, char *str);
+int			get_dy(t_env *e, char *str);
+int			get_it(t_env *e, char *str);
+void		ft_fillpixels(t_env *e, int x, int y, t_uint color);
+void		topleft(t_env *e, t_point2d a, int size);
+void		topright(t_env *e, t_point2d a, int size);
+void		botleft(t_env *e, t_point2d a, int size);
+void		botright(t_env *e, t_point2d a, int size);
+void		square_topleft(t_env *e, t_point2d a, int size);
+void		square_topright(t_env *e, t_point2d a, int size);
+void		square_botleft(t_env *e, t_point2d a, int size);
+void		square_botright(t_env *e, t_point2d a, int size);
 
 #endif

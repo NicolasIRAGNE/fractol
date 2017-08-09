@@ -14,6 +14,8 @@ Sets the color of the fractal to the one specified. Colors available = red, blue
 Sets the program to render only 1/dx pixel horizontally. Can greatly speed up the rendering. Also gives a cool retro gameboy-like effect. If the value provided is negative or zero, it is set to 1.
 .IP "--dy [>0]"
 Same as --dx but vertically.
+.IP "-f"
+If either dx or dy is specified, will fill the black pixels with pixels of the same color. Speeds up the rendering at the cost of precision.
 .IP "-m [>0]"
 Sets the initial color multiplier.
 .IP "-x [1-2560]"
@@ -28,27 +30,37 @@ Sets the epileptic mode. Color changes everytime the mouse is moved.
 Sets the 'chelou' mode on. Kinda psychedelic. Very cool.
 .IP "-h"
 Displays help.
-.IP "--chelou"
-Same as -C.
-.IP "--help"
-Same as -h.
 .IP "-steak"
 euh sa sa fe rien
 .SH KEY BINDINGS
 .IP "O"
-Decreases iterations by 1 while the key is held and re-renders the fractal.
+Decreases iterations by 1.
 .IP "P"
-Increases iterations by 1 while the key is held and re-renders the fractal.
+Increases iterations by 1.
+.IP "K"
+Decreases the color multiplier by 1.
+.IP "L"
+Increases the color multiplier by 1.
+.IP "S"
+If using julia, stops the mouse from changing the fractal. Pressing it again enables it back.
 .IP "D"
 Unsets the epileptic mode.
+.IP "F"
+Sets or unsets the chelou mode.
 .IP "Arrow keys"
 Moves the fractal in cardinal directions.
-.IP "S key"
-If using julia, stops the mouse from changing the fractal. Pressing it again enables it back.
 .IP "Mouse1 or Mwheelup"
 Zooms in the fractal where the cursor is.
 .IP "Mouse2 or Mwheeldown"
 Dezooms.
+.SH LONG FORMAT
+Longer versions of the options for the sake of clarity.
+.IP "--chelou"
+Same as -C.
+.IP "--help"
+Same as -h.
+.IP "--fill"
+Same as -f.
 .SH BUGS
 bah eu si tu met une fenetre de 1 pixel c pouri tu tattend a koi aussi
 .SH AUTHOR

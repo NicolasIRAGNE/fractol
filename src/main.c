@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 15:15:52 by niragne           #+#    #+#             */
-/*   Updated: 2017/08/08 20:43:12 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/09 20:16:43 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int main(int ac, char **av)
 	e.mlx = mlx_init();
 	e.win = mlx_new_window(e.mlx, e.win_x, e.win_y, "fractol");
 	e.image = ft_new_image(e.mlx, e.win_x, e.win_y);
-
 	if (ft_strcmp(av[1], "mandelbrot") == 0)
 	{
 		mlx_hook(e.win, 2, 3, key_hook_mandel, &e);
@@ -43,5 +42,6 @@ int main(int ac, char **av)
 	}
 	else
 		exit(1);
+	printf("%d\n", e.flags & FLAG_PSYCH);
 	mlx_loop(e.mlx);
 }

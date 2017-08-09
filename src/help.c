@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 21:01:30 by niragne           #+#    #+#             */
-/*   Updated: 2017/08/08 21:20:12 by niragne          ###   ########.fr       */
+/*   Updated: 2017/08/09 17:42:57 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void	print_help(void)
 ARROW KEYS: move fractal\n\
 S : Enable or disable mouse on julia\n\
 D : Enable or disable psych mode\n\
+F : Enable or disable chelou mode \n\
 Right click / Mouse wheel down: Zoom\n\
-Left click / Mouse wheel up: Dezoom\n");
+Left click / Mouse wheel up: Dezoom\n\
+\n\
+See the manual for more info.\n");
 }
